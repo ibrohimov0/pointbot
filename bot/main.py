@@ -1,9 +1,9 @@
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 from bot.config import BOT_TOKEN
-from bot.handlers.start_handler import start
-from bot.handlers.invite_handler import invite_handler
-from bot.handlers.new_member_handler import new_member
-from bot.handlers.error_handler import error_handler
+from bot.handlers.start import start
+from bot.handlers.invite import invite_handler
+from bot.handlers.new_member import new_member
+from bot.handlers.error import error_handler
 
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -14,7 +14,7 @@ def main():
 
     app.add_error_handler(error_handler)
 
-    print("Bot ishlayapti...")
+    print("Working...")
     app.run_polling()
 
 if __name__ == "__main__":

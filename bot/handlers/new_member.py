@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from bot.services.invite_service import find_invite_owner, increase_invite_usage
-from bot.services.user_service import add_point
+from bot.services.invite import find_invite_owner, increase_invite_usage
+from bot.services.user import add_point
 
 async def new_member(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message

@@ -1,2 +1,2 @@
 async def error_handler(update, context):
-    print(f"Xato: {context.error}")
+    print(f"Error: {context.error}")
