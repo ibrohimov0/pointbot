@@ -1,4 +1,4 @@
-from telegram import Update
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from bot.services.user import get_user, create_user
 
@@ -10,8 +10,16 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not user:
         create_user(tg_id, username)
-        await update.message.reply_text(
-            "Xush kelibsiz! Siz ro‘yxatdan o‘tdingiz.\nInvite link yuboring."
-        )
-    else:
-        await update.message.reply_text("Invite link yuborishingiz mumkin.")
+
+    keyboard = [
+        [
+            InlineKeyboardButton("📌 Guruh 1", url="https://t.me/foydali_link_0"),
+        ],
+        [
+            InlineKeyboardButton("✅ Tekshirish", callback_data="check_subs"),
+        ]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text("Xush kelibsiz! Siz ro‘yxatdan o‘tdingiz.\nIltimos guruhlarga obuna bo'ling hamda 1 ball yutib oling.",reply_markup=reply_markup)
