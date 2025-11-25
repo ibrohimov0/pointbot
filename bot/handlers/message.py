@@ -19,4 +19,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         first_point = user.get("firstPoint", False) if user else False
         await update.effective_message.reply_text(f"Sizning ballaringiz: {points+ (1 if first_point else 0)}")
     elif text == "Link yaratish":
-        await update.effective_message.reply_text("Siz Tugma B ni bosdingiz!")
+        bot_username = context.bot.username
+        bot_link = f"https://t.me/{bot_username}?start={user_id}"
+        await update.effective_message.reply_text(f"Sizning bot linkingiz:\n{bot_link}")

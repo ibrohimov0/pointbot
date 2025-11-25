@@ -1,10 +1,15 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 from telegram.ext import ContextTypes
-from bot.services.user import get_user, create_user
+from bot.services.user import get_user, create_user, add_point
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_id = update.effective_user.id
     username = update.effective_user.username
+    args = context.args
+
+    if args:
+        referrer_id = int(args[0])
+        add_point(referrer_id)
 
     user = get_user(tg_id)
 
