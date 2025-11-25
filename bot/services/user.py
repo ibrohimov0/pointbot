@@ -8,14 +8,13 @@ def create_user(tg_id, username):
         "telegramId": tg_id,
         "username": username,
         "points": 0,
-        "firstPoint": False,
-        "inviteLinks": []
+        "firstPoint": False
     })
 
 def add_first_point(tg_id):
     users.update_one(
         {"telegramId": tg_id},
-        {"firstPoint": True}
+        {"$set":{"firstPoint": True}}
     )
 
 def add_point(tg_id):

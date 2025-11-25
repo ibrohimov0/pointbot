@@ -1,4 +1,4 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 from telegram.ext import ContextTypes
 from bot.services.user import get_user, create_user
 
@@ -23,3 +23,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text("Xush kelibsiz! Siz ro‘yxatdan o‘tdingiz.\nIltimos guruhlarga obuna bo'ling hamda 1 ball yutib oling.",reply_markup=reply_markup)
+
+    reply_keyboard = [["Ballarni ko'rish", "Link yaratish"]]
+    reply_markup_input = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True)
+
+    await update.message.reply_text(
+        "Sizga yordamchi tugmalar:",
+        reply_markup=reply_markup_input
+    )
