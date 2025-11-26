@@ -6,3 +6,4 @@ client = MongoClient(MONGO_URI)
 db = client["telegram_bot"]
 users = db["users"]
 invites = db["invites"]
+links = db["links"]
